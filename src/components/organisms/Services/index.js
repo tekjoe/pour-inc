@@ -84,10 +84,14 @@ const ServiceControls = styled.ul`
     text-align: center;
     letter-spacing: 1px;
     font-weight: 500;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
   }
   li {
     position: relative;
+    &:hover > button {
+      color: black;
+    }
   }
   li.active {
     &::before {
@@ -98,8 +102,9 @@ const ServiceControls = styled.ul`
       position: absolute;
       bottom: -0.5rem;
       left: calc(50% - 1.5rem);
+      transition: all 0.3s ease-in-out;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
       &::before {
         content: "";
         height: 2px;
@@ -112,11 +117,21 @@ const ServiceControls = styled.ul`
     }
     @media (min-width: 1200px) {
       &::before {
+        left: -8rem;
+      }
+    }
+    @media (min-width: 1200px) {
+      &::before {
         left: -11rem;
       }
     }
     button {
       color: black;
+    }
+  }
+  li.active:hover {
+    &::before {
+      width: 7rem;
     }
   }
   @media (min-width: 768px) {
@@ -149,21 +164,48 @@ const Service = styled.div`
   }
 `
 
+const barServicesImage = (
+  <StaticImage
+    src="../../../images/cocktail_consultation.jpg"
+    layout="fullWidth"
+    aspectRatio={1}
+  />
+)
+
+const cocktailConsultationImage = (
+  <StaticImage
+    src="../../../images/bar_services-1.jpg"
+    layout="fullWidth"
+    aspectRatio={1}
+  />
+)
+
+const barStaffingImage = (
+  <StaticImage
+    src="../../../images/bar_staff-1.jpg"
+    layout="fullWidth"
+    aspectRatio={1}
+  />
+)
+
 const services = {
   cocktailConsultation: {
     title: "Cocktail Consultation",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae rerum quibusdam quidem inventore doloribus, fuga obcaecati voluptates nulla nemo optio omnis delectus minus voluptatem! Cocktails?",
+    image: cocktailConsultationImage,
   },
   barServices: {
     title: "Premium Bar Services",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae rerum quibusdam quidem inventore doloribus, fuga obcaecati voluptates nulla nemo optio omnis delectus minus voluptatem! Services?",
+    image: barServicesImage,
   },
   barStaffing: {
     title: "Professional Bar Staffing",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae rerum quibusdam quidem inventore doloribus, fuga obcaecati voluptates nulla nemo optio omnis delectus minus voluptatem! Staffing?",
+    image: barStaffingImage,
   },
 }
 
@@ -172,18 +214,14 @@ const Services = () => {
   const handleClick = e => {
     e.preventDefault()
     setService(e.target.dataset.service)
+    // e.target.offsetParent.classList.toggle("active")
   }
   return (
     <Section>
       <Container>
         <Row gap={3}>
           <Col>
-            <ServiceImage>
-              <StaticImage
-                src="../../../images/bar_services-1.jpg"
-                layout="fullWidth"
-              />
-            </ServiceImage>
+            <ServiceImage>{services[service].image}</ServiceImage>
           </Col>
           <Col justify="center">
             <Service>
