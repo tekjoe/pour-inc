@@ -5,8 +5,7 @@ import {
   UniqueSellingPoints,
   SellingPoint,
 } from "../components/organisms/UniqueSellingPoints"
-import { Button } from "../components/atoms/Button"
-import { Masthead } from "../components/organisms/Masthead"
+import Masthead from "../components/organisms/Masthead"
 import Highlights from "../components/organisms/Highlights"
 import Services from "../components/organisms/Services"
 import SEO from "../components/seo"
@@ -16,26 +15,7 @@ import CallToAction from "../components/organisms/CallToAction"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Masthead>
-      <Masthead.Body>
-        <h1>Raising the bar at your next event</h1>
-        <p>
-          Pour Inc. is a professional Mobile Bartending Service based in
-          Milwaukee, Wisconsin, offering a high-quality experience achieved
-          through years of expertise in the event industry.
-        </p>
-        <Button to="/">Book an Event</Button>
-      </Masthead.Body>
-      <Masthead.Image>
-        <StaticImage
-          src="../images/masthead-placeholder.jpg"
-          alt="A signature Pour Inc. cocktail"
-          placeholder="blurred"
-          layout="fullWidth"
-          style={{ height: "100%" }}
-        />
-      </Masthead.Image>
-    </Masthead>
+    <Masthead />
     <UniqueSellingPoints>
       <Container>
         <SellingPoint>

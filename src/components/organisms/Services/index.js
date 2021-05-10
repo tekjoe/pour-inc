@@ -73,7 +73,7 @@ const ServiceControls = styled.ul`
   justify-content: center;
   list-style-type: none;
   gap: 1.25rem;
-  li button {
+  li {
     color: gray;
     width: 100%;
     border: none;
@@ -86,14 +86,14 @@ const ServiceControls = styled.ul`
     font-weight: 500;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-  }
-  li {
     position: relative;
     &:hover > button {
       color: black;
     }
   }
+
   li.active {
+    color: ${({ theme }) => theme.colors.codGray};
     &::before {
       content: "";
       height: 2px;
@@ -138,11 +138,14 @@ const ServiceControls = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 3rem;
-    li button {
+    li {
       width: auto;
     }
   }
   @media (min-width: 992px) {
+    li {
+      text-align: left;
+    }
     order: 2;
     flex-direction: column;
     justify-content: flex-start;
@@ -211,10 +214,11 @@ const services = {
 
 const Services = () => {
   const [service, setService] = useState("cocktailConsultation")
+  const [active, setActive] = useState("cocktailConsultation")
   const handleClick = e => {
     e.preventDefault()
     setService(e.target.dataset.service)
-    // e.target.offsetParent.classList.toggle("active")
+    setActive(e.target.dataset.service)
   }
   return (
     <Section>
@@ -226,23 +230,26 @@ const Services = () => {
           <Col justify="center">
             <Service>
               <ServiceControls>
-                <li className="active">
-                  <button
-                    onClick={handleClick}
-                    data-service="cocktailConsultation"
-                  >
-                    Cocktail Consultation
-                  </button>
+                <li
+                  className={active === "cocktailConsultation" ? "active" : ""}
+                  onClick={handleClick}
+                  data-service="cocktailConsultation"
+                >
+                  Cocktail Consultation
                 </li>
-                <li>
-                  <button onClick={handleClick} data-service="barServices">
-                    Bar Services
-                  </button>
+                <li
+                  className={active === "barServices" ? "active" : ""}
+                  onClick={handleClick}
+                  data-service="barServices"
+                >
+                  Bar Services
                 </li>
-                <li>
-                  <button onClick={handleClick} data-service="barStaffing">
-                    Bar Staffing
-                  </button>
+                <li
+                  className={active === "barStaffing" ? "active" : ""}
+                  onClick={handleClick}
+                  data-service="barStaffing"
+                >
+                  Bar Staffing
                 </li>
               </ServiceControls>
               <ServiceDescription>
