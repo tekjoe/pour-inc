@@ -140,7 +140,7 @@ export default () => {
           }}
         />
         <StaticImage
-          src="../images/masthead-placeholder.jpg"
+          src="../../../images/masthead-placeholder.jpg"
           alt="A signature Pour Inc. cocktail"
           placeholder="blurred"
           layout="fullWidth"
