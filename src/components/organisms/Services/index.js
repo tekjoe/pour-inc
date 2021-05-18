@@ -109,19 +109,21 @@ const ServiceControls = styled.ul`
         content: "";
         height: 2px;
         background: ${({ theme }) => theme.colors.beaver};
-        width: 6rem;
+        width: 5rem;
         position: absolute;
-        left: -9rem;
+        left: -7rem;
         top: 50%;
       }
     }
     @media (min-width: 1200px) {
       &::before {
+        width: 6rem;
         left: -8rem;
       }
     }
-    @media (min-width: 1200px) {
+    @media (min-width: 1400px) {
       &::before {
+        width: 7rem;
         left: -11rem;
       }
     }

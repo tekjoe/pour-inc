@@ -10,7 +10,10 @@ const Masthead = styled.section`
   grid-template-columns: 1fr;
   @media (min-width: 992px) {
     grid-template-columns: repeat(12, 1fr);
-    height: 820px;
+    height: ${({ size }) => (size === "small" ? "30rem" : "820px")};
+  }
+  @media (min-width: 1200px) {
+    height: ${({ size }) => (size === "small" ? "35rem" : "820px")};
   }
 `
 
@@ -21,7 +24,8 @@ Masthead.Body = styled.div`
   justify-content: center;
   text-align: center;
   color: white;
-  padding: 4rem 1.5rem 11rem 1.5rem;
+  padding: ${({ size }) =>
+    size === "small" ? "4rem 1.5rem 7rem 1.5rem" : "4rem 1.5rem 11rem 1.5rem"};
   z-index: 1000;
   h1 {
     font-weight: 300;
@@ -32,7 +36,8 @@ Masthead.Body = styled.div`
     margin-bottom: 2rem;
   }
   @media (min-width: 768px) {
-    padding: 4rem 6rem 11.5rem;
+    padding: ${({ size }) =>
+      size === "small" ? "4rem 1.5rem 7rem 1.5rem" : "4rem 6rem 11.5rem"};
     h1 {
       font-size: 3rem;
     }
@@ -63,12 +68,12 @@ Masthead.Image = styled.div`
   height: 20rem;
   grid-row: 1;
   position: relative;
-  @media (min-width: 768px) {
-    height: 23rem;
-  }
   @media (min-width: 992px) {
+    height: ${({ size }) => (size === "small" ? "30rem" : "51.25rem")};
     grid-column: 6 / -1;
-    height: 820px;
+  }
+  @media (min-width: 1200px) {
+    height: ${({ size }) => (size === "small" ? "35rem" : "51.25rem")};
   }
 `
 
@@ -89,15 +94,15 @@ const ImageWiper = styled(motion.div)`
   position: absolute;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.codGray};
-  z-index: 50;
+  z-index: 4;
 `
 
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.04, 0.9] }
 
-export default () => {
+export default ({ title, subtitle, button, size }) => {
   return (
-    <Masthead>
-      <Masthead.Body>
+    <Masthead size={size}>
+      <Masthead.Body size={size}>
         <AnimatedTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{
@@ -106,37 +111,35 @@ export default () => {
             transition: { ...transition },
           }}
         >
-          Raising the bar at your next event
+          {title}
         </AnimatedTitle>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
             y: 0,
-            transition: { delay: 0.5, ...transition },
+            transition: { ...transition },
           }}
         >
-          Pour Inc. is a professional Mobile Bartending Service based in
-          Milwaukee, Wisconsin, offering a high-quality experience achieved
-          through years of expertise in the event industry.
+          {subtitle}
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
             y: 0,
-            transition: { delay: 0.75, ...transition },
+            transition: { ...transition },
           }}
         >
-          <Button to="/">Book an Event</Button>
+          {button ? <Button to="/contact">Book an Event</Button> : null}
         </motion.div>
       </Masthead.Body>
-      <Masthead.Image>
+      <Masthead.Image size={size}>
         <ImageWiper
           initial={{ width: "100%" }}
           animate={{
             width: 0,
-            transition: { delay: 0.8, ...transition },
+            transition: { ...transition },
           }}
         />
         <StaticImage
@@ -145,6 +148,7 @@ export default () => {
           placeholder="blurred"
           layout="fullWidth"
           style={{ height: "100%" }}
+          imgStyle={{ objectFit: "cover" }}
         />
       </Masthead.Image>
     </Masthead>

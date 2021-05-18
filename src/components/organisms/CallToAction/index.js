@@ -52,7 +52,7 @@ const CallToAction = () => {
           </Col>
           <Col flex={1}>
             <CtaText>
-              <Button to="/">Book an Event</Button>
+              <Button to="/contact">Book an Event</Button>
             </CtaText>
           </Col>
         </Row>

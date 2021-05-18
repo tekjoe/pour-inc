@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const Row = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ reverse }) => (reverse ? "column-reverse" : "column")};
   gap: ${({ gap }) => `${gap}rem`};
   @media (min-width: 992px) {
     flex-direction: row;

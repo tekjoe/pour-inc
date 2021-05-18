@@ -15,7 +15,13 @@ import CallToAction from "../components/organisms/CallToAction"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Masthead />
+    <Masthead
+      title="Raising the bar at your next event"
+      subtitle="Pour Inc. is a professional Mobile Bartending Service based in
+          Milwaukee, Wisconsin, offering a high-quality experience achieved
+          through years of expertise in the event industry."
+      button={true}
+    />
     <UniqueSellingPoints>
       <Container>
         <SellingPoint>
@@ -23,7 +29,8 @@ const IndexPage = () => (
             <StaticImage
               src="../images/usp-placeholder.jpg"
               alt="A signature Pour Inc. cocktail"
-              placeholder="blured"
+              placeholder="blurred"
+              loading="eager"
               layout="constrained"
               style={{ width: "100%" }}
             />
