@@ -174,6 +174,7 @@ const barServicesImage = (
     src="../../../images/cocktail_consultation.jpg"
     layout="fullWidth"
     aspectRatio={1}
+    alt="Cocktail Consultation"
   />
 )
 
@@ -182,6 +183,7 @@ const cocktailConsultationImage = (
     src="../../../images/bar_services-1.jpg"
     layout="fullWidth"
     aspectRatio={1}
+    alt="Bar Services"
   />
 )
 
@@ -190,6 +192,7 @@ const barStaffingImage = (
     src="../../../images/bar_staff-1.jpg"
     layout="fullWidth"
     aspectRatio={1}
+    alt="Bar Staffing"
   />
 )
 
@@ -257,7 +260,7 @@ const Services = () => {
               <ServiceDescription>
                 <h3>{services[service].title}</h3>
                 <p>{services[service].description}</p>
-                <Button inverse to="/">
+                <Button inverse to="/services">
                   Learn More
                 </Button>
               </ServiceDescription>

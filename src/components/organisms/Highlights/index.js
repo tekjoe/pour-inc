@@ -132,6 +132,7 @@ const Highlights = () => {
                   <StaticImage
                     src="../../../images/ig-1.png"
                     style={{ height: "100%" }}
+                    alt="Instagram Highlight"
                   />
                 </Highlight.Image>
                 <Highlight.Body>
@@ -147,6 +148,7 @@ const Highlights = () => {
                   <StaticImage
                     src="../../../images/ig-2.png"
                     style={{ height: "100%" }}
+                    alt="Instagram Highlight"
                   />
                 </Highlight.Image>
                 <Highlight.Body>
@@ -162,6 +164,7 @@ const Highlights = () => {
                   <StaticImage
                     src="../../../images/ig-1.png"
                     style={{ height: "100%" }}
+                    alt="Instagram Highlight"
                   />
                 </Highlight.Image>
                 <Highlight.Body>

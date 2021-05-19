@@ -14,6 +14,7 @@ const Masthead = styled.section`
   }
   @media (min-width: 1200px) {
     height: ${({ size }) => (size === "small" ? "35rem" : "820px")};
+    height: ${({ size }) => (size === "extraSmall" ? "30rem" : "")};
   }
 `
 
@@ -26,7 +27,8 @@ Masthead.Body = styled.div`
   color: white;
   padding: ${({ size }) =>
     size === "small" ? "4rem 1.5rem 7rem 1.5rem" : "4rem 1.5rem 11rem 1.5rem"};
-  z-index: 1000;
+  padding: ${({ size }) => (size === "extraSmall" ? "4rem 1.5rem" : "")};
+  z-index: 10;
   h1 {
     font-weight: 300;
     font-size: 2rem;
@@ -74,6 +76,7 @@ Masthead.Image = styled.div`
   }
   @media (min-width: 1200px) {
     height: ${({ size }) => (size === "small" ? "35rem" : "51.25rem")};
+    height: ${({ size }) => (size === "extraSmall" ? "30rem" : "")};
   }
 `
 
