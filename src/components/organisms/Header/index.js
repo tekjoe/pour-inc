@@ -50,6 +50,7 @@ const Header = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
+
   useEffect(() => scrollYProgress.onChange(v => setYValue(v)), [
     scrollYProgress,
   ])

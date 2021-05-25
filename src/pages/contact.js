@@ -86,7 +86,7 @@ const ContactPage = () => {
       "https://widget.honeybook.com/assets_users_production/websiteplacements/placement-controller.min.js",
       "5d64095f46e03700d5583c0b"
     )
-  })
+  }, [])
   return (
     <Layout>
       <SEO title="Contact " />

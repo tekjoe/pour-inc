@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useRef, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
@@ -95,7 +95,6 @@ const DetailsMask = styled(motion.div)`
 const Navigation = styled(motion.div)`
   position: absolute;
   display: flex;
-  height: 100vh;
   width: 100vw;
   z-index: 14;
   top: 0;
@@ -105,10 +104,9 @@ const Navigation = styled(motion.div)`
 `
 
 const FullNav = ({ isOpen }) => {
-  const navRef = useRef()
-
   const variants = {
     open: {
+      height: "100vh",
       y: 0,
       transition: {
         staggerChildren: 0.08,
@@ -117,43 +115,8 @@ const FullNav = ({ isOpen }) => {
       },
     },
     closed: {
-      y: typeof window !== "undefined" && -window.innerHeight,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-        when: "afterChildren",
-        staggerDirection: -1,
-      },
-    },
-  }
-
-  const details = {
-    open: {
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.4,
-        staggerDirection: 1,
-      },
-    },
-    closed: {
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-        when: "afterChildren",
-        staggerDirection: -1,
-      },
-    },
-  }
-
-  const navMenu = {
-    open: {
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.4,
-        staggerDirection: 1,
-      },
-    },
-    closed: {
+      height: 0,
+      y: -250,
       transition: {
         staggerChildren: 0.05,
         delayChildren: 0.1,
@@ -189,7 +152,6 @@ const FullNav = ({ isOpen }) => {
       animate={isOpen ? "open" : "closed"}
       initial={false}
       variants={variants}
-      ref={navRef}
     >
       <Details>
         <Details.Body>
@@ -215,11 +177,11 @@ const FullNav = ({ isOpen }) => {
         <ul>
           <NavItem>
             <NavMask variants={navItem} initial={false} />
-            <NavLink to="/services">Services</NavLink>
+            <NavLink to="/services/">Services</NavLink>
           </NavItem>
           <NavItem>
             <NavMask variants={navItem} initial={false} />
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about/">About</NavLink>
           </NavItem>
           <NavItem>
             <NavMask variants={navItem} initial={false} />
@@ -227,7 +189,7 @@ const FullNav = ({ isOpen }) => {
           </NavItem>
           <NavItem>
             <NavMask variants={navItem} initial={false} />
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/contact/">Contact</NavLink>
           </NavItem>
         </ul>
       </NavMenu>
