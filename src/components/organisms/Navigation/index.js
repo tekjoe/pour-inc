@@ -7,6 +7,7 @@ const DesktopNavigation = styled.div`
   display: none;
   padding: 1rem 0;
   color: white;
+  z-index: 15;
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;

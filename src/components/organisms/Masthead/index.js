@@ -28,7 +28,7 @@ Masthead.Body = styled.div`
   padding: ${({ size }) =>
     size === "small" ? "4rem 1.5rem 7rem 1.5rem" : "4rem 1.5rem 11rem 1.5rem"};
   padding: ${({ size }) => (size === "extraSmall" ? "4rem 1.5rem" : "")};
-  z-index: 10;
+  z-index: 14;
   h1 {
     font-weight: 300;
     font-size: 2rem;
@@ -97,7 +97,7 @@ const ImageWiper = styled(motion.div)`
   position: absolute;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.codGray};
-  z-index: 4;
+  z-index: 13;
 `
 
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.04, 0.9] }

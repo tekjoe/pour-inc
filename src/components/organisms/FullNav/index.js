@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
@@ -29,11 +29,15 @@ const NavLink = styled(Link)`
 `
 
 const Details = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 2;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    z-index: 200;
+  }
 `
 
 Details.Body = styled.div`
@@ -90,20 +94,22 @@ const DetailsMask = styled(motion.div)`
 
 const Navigation = styled(motion.div)`
   position: absolute;
+  display: flex;
   height: 100vh;
   width: 100vw;
-  z-index: 100;
+  z-index: 14;
   top: 0;
   left: 0;
   background: ${({ theme }) => theme.colors.codGray};
   color: white;
-  display: flex;
 `
 
 const FullNav = ({ isOpen }) => {
+  const navRef = useRef()
+
   const variants = {
     open: {
-      opacity: 1,
+      y: 0,
       transition: {
         staggerChildren: 0.08,
         delayChildren: 0.4,
@@ -111,7 +117,7 @@ const FullNav = ({ isOpen }) => {
       },
     },
     closed: {
-      opacity: 0,
+      y: typeof window !== "undefined" && -window.innerHeight,
       transition: {
         staggerChildren: 0.05,
         delayChildren: 0.1,
@@ -181,24 +187,26 @@ const FullNav = ({ isOpen }) => {
     <Navigation
       isOpen={isOpen}
       animate={isOpen ? "open" : "closed"}
+      initial={false}
       variants={variants}
+      ref={navRef}
     >
       <Details>
         <Details.Body>
           <h2>
-            <DetailsMask variants={navItem} />
+            <DetailsMask variants={navItem} initial={false} />
             Let's raise the bar at your next event.
           </h2>
           <p>
-            <DetailsMask variants={navItem} />
+            <DetailsMask variants={navItem} initial={false} />
             (414) 559-7394
           </p>
           <p>
-            <DetailsMask variants={navItem} />
+            <DetailsMask variants={navItem} initial={false} />
             info@pourinc.co
           </p>
           <p>
-            <DetailsMask variants={navItem} />
+            <DetailsMask variants={navItem} initial={false} />
             5517A W North Ave, Milwaukee, WI 53208
           </p>
         </Details.Body>
@@ -206,19 +214,19 @@ const FullNav = ({ isOpen }) => {
       <NavMenu>
         <ul>
           <NavItem>
-            <NavMask variants={navItem} />
+            <NavMask variants={navItem} initial={false} />
             <NavLink to="/services">Services</NavLink>
           </NavItem>
           <NavItem>
-            <NavMask variants={navItem} />
+            <NavMask variants={navItem} initial={false} />
             <NavLink to="/about">About</NavLink>
           </NavItem>
           <NavItem>
-            <NavMask variants={navItem} />
+            <NavMask variants={navItem} initial={false} />
             <NavLink to="/">Partners</NavLink>
           </NavItem>
           <NavItem>
-            <NavMask variants={navItem} />
+            <NavMask variants={navItem} initial={false} />
             <NavLink to="/contact">Contact</NavLink>
           </NavItem>
         </ul>
